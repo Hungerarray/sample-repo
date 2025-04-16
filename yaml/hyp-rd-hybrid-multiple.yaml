@@ -13,7 +13,7 @@ appium: true
 
 autosplit: true
 concurrency: 5
-parallelism: 3
+parallelism: 4
 
 pre:
   - mvn -Dmaven.repo.local=./.m2 dependency:resolve
@@ -29,6 +29,7 @@ testDiscovery:
   type: raw
   mode: dynamic
   command: grep 'test name' src/test/java/$os-parallel.xml | awk '{print$2}' | sed 's/name=//g' | sed 's/\x3e//g'
-testRunnerCommand: mvn test -Dmaven.repo.local=./.m2 dependency:resolve -DselectedTests=$test -Dos=$os -Phyperexecute-hybrid 
+testRunnerCommand: mvn test -Dmaven.repo.local=./.m2 dependency:resolve -DselectedTests=$test -Dos=$os -Phyperexecute-hybrid
 
-jobLabel: ['android','iOS', 'appium', 'hybrid']
+jobLabel: ["android", "iOS", "appium", "hybrid"]
+
