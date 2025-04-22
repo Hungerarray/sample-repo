@@ -12,7 +12,7 @@ runson: linux
 appium: true
 
 autosplit: true
-concurrency: 5
+concurrency: 1
 parallelism: 4
 
 pre:
