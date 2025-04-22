@@ -25,6 +25,17 @@ runtime:
   language: node
   version: 18
 
+uploadArtefacts:
+  - name: ExecutionSnapshots
+    path:
+     - NUnitHyperTestDemo/Reports/**
+
+report: true
+partialReports:
+    type: html
+    location: NUnitHyperTestDemo/
+    frameworkName: maven/testng
+
 testDiscovery:
   type: raw
   mode: dynamic
