@@ -19,7 +19,6 @@ pre:
 
 matrix:
   os: [linux]
-  runtime: [android, ios]
 
 runtime:
   language: node
@@ -28,8 +27,8 @@ runtime:
 testDiscovery:
   type: raw
   mode: dynamic
-  command: grep 'test name' src/test/java/$runtime-parallel.xml | awk '{print$2}' | sed 's/name=//g' | sed 's/\x3e//g'
-testRunnerCommand: mvn test -Dmaven.repo.local=./.m2 dependency:resolve -DselectedTests=$test -Dos=$runtime -Phyperexecute-hybrid
+  command: grep 'test name' src/test/java/android-parallel.xml | awk '{print$2}' | sed 's/name=//g' | sed 's/\x3e//g'
+testRunnerCommand: mvn test -Dmaven.repo.local=./.m2 dependency:resolve -DselectedTests=$test -Dos=android -Phyperexecute-hybrid
 
 jobLabel: ["android", "iOS", "appium", "hybrid"]
 
