@@ -18,6 +18,7 @@ pre:
   - mvn -Dmaven.repo.local=./.m2 dependency:resolve
 
 matrix:
+  os: [linux]
   runtime: [android, ios]
 
 runtime:
