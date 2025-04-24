@@ -12,35 +12,23 @@ runson: linux
 appium: true
 
 autosplit: true
-concurrency: 1
 parallelism: 4
 
 pre:
   - mvn -Dmaven.repo.local=./.m2 dependency:resolve
 
 matrix:
-  os: [android, ios]
+  runtime: [android, ios]
 
 runtime:
   language: node
   version: 18
 
-uploadArtefacts:
-  - name: ExecutionSnapshots
-    path:
-     - NUnitHyperTestDemo/Reports/**
-
-report: true
-partialReports:
-    type: html
-    location: NUnitHyperTestDemo/
-    frameworkName: maven/testng
-
 testDiscovery:
   type: raw
   mode: dynamic
-  command: grep 'test name' src/test/java/$os-parallel.xml | awk '{print$2}' | sed 's/name=//g' | sed 's/\x3e//g'
-testRunnerCommand: mvn test -Dmaven.repo.local=./.m2 dependency:resolve -DselectedTests=$test -Dos=$os -Phyperexecute-hybrid
+  command: grep 'test name' src/test/java/$runtime-parallel.xml | awk '{print$2}' | sed 's/name=//g' | sed 's/\x3e//g'
+testRunnerCommand: mvn test -Dmaven.repo.local=./.m2 dependency:resolve -DselectedTests=$test -Dos=$runtime -Phyperexecute-hybrid
 
 jobLabel: ["android", "iOS", "appium", "hybrid"]
 
