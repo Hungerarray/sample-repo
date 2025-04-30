@@ -28,7 +28,7 @@ testDiscovery:
   type: raw
   mode: dynamic
   command: grep 'test name' src/test/java/android-parallel.xml | awk '{print$2}' | sed 's/name=//g' | sed 's/\x3e//g'
-
+testRunnerCommand: echo $test; mvn test -Dmaven.repo.local=./.m2 dependency:resolve -DselectedTests=$test -Dos=android -Phyperexecute-hybrid
 
 jobLabel: ["android", "iOS", "appium", "hybrid"]
 
